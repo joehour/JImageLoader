@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5qM-C7-eSz">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="234" id="4Rg-1O-VRU"/>
+                                    <constraint firstAttribute="width" constant="329" id="CWU-AE-RUh"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4Rg-1O-VRU"/>
+                                        <exclude reference="CWU-AE-RUh"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4Rg-1O-VRU"/>
+                                        <include reference="CWU-AE-RUh"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuj-Ih-DvG">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="ActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4uT-gs-HZd"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nea-hC-sPu">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="ft4-hf-WZA"/>
+                                    <constraint firstAttribute="width" constant="136" id="vW4-TC-wjP"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ft4-hf-WZA"/>
+                                        <exclude reference="vW4-TC-wjP"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ft4-hf-WZA"/>
+                                        <include reference="vW4-TC-wjP"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="top" secondItem="5qM-C7-eSz" secondAttribute="bottom" constant="167" id="1vA-D6-FPH"/>
+                            <constraint firstItem="5qM-C7-eSz" firstAttribute="top" secondItem="Nea-hC-sPu" secondAttribute="bottom" constant="37" id="3KP-Sr-Zvv"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="5qM-C7-eSz" secondAttribute="bottom" constant="387" id="CSb-VQ-Q2s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nea-hC-sPu" secondAttribute="trailing" constant="208" id="DKZ-NR-elG"/>
+                            <constraint firstItem="Nea-hC-sPu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="14" id="DhE-9O-2k6"/>
+                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="leading" secondItem="5qM-C7-eSz" secondAttribute="leading" id="Ma9-x4-bci"/>
+                            <constraint firstItem="Nea-hC-sPu" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="WBL-Pw-56L"/>
+                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="trailing" secondItem="5qM-C7-eSz" secondAttribute="trailing" id="XWR-6H-o7U"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5qM-C7-eSz" secondAttribute="trailing" constant="15" id="adE-78-WoY"/>
+                            <constraint firstItem="5qM-C7-eSz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="iFf-RB-V0i"/>
+                            <constraint firstItem="5qM-C7-eSz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="159" id="zdb-Yg-MI0"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="5qM-C7-eSz"/>
+                                <exclude reference="Wuj-Ih-DvG"/>
+                                <exclude reference="Nea-hC-sPu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="CSb-VQ-Q2s"/>
+                                <exclude reference="1vA-D6-FPH"/>
+                                <exclude reference="Ma9-x4-bci"/>
+                                <exclude reference="XWR-6H-o7U"/>
+                                <exclude reference="3KP-Sr-Zvv"/>
+                                <exclude reference="adE-78-WoY"/>
+                                <exclude reference="iFf-RB-V0i"/>
+                                <exclude reference="zdb-Yg-MI0"/>
+                                <exclude reference="DKZ-NR-elG"/>
+                                <exclude reference="DhE-9O-2k6"/>
+                                <exclude reference="WBL-Pw-56L"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="5qM-C7-eSz"/>
+                                <include reference="Wuj-Ih-DvG"/>
+                                <include reference="Nea-hC-sPu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="CSb-VQ-Q2s"/>
+                                <include reference="1vA-D6-FPH"/>
+                                <include reference="Ma9-x4-bci"/>
+                                <include reference="XWR-6H-o7U"/>
+                                <include reference="3KP-Sr-Zvv"/>
+                                <include reference="adE-78-WoY"/>
+                                <include reference="iFf-RB-V0i"/>
+                                <exclude reference="zdb-Yg-MI0"/>
+                                <include reference="DKZ-NR-elG"/>
+                                <include reference="DhE-9O-2k6"/>
+                                <include reference="WBL-Pw-56L"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="testView" destination="5qM-C7-eSz" id="LmV-wo-FBY"/>
+                        <outlet property="testView2" destination="Nea-hC-sPu" id="PUe-fE-cya"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="339" y="368.25"/>
+        </scene>
+    </scenes>
+</document>
