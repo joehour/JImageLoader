@@ -115,6 +115,7 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
         session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
         session?.downloadTaskWithURL(url).resume()
+        
 
     }
     
@@ -232,9 +233,11 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         if JBool! {
             self.JCompletion(Success: true)
         }
+        //session.invalidateAndCancel()
         
         dispatch_async(dispatch_get_main_queue()) { () -> Void in
             
+            usleep((uint)(0.2*1000000))
             self.image = image
             self.JCircleProgressView.hidden = true
             
@@ -256,6 +259,18 @@ extension UIImageView: NSURLSessionDownloadDelegate {
     
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
 
+        
+    }
+    
+    public func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
+        
+        if(error != nil) {
+            session.invalidateAndCancel()
+            
+        } else {
+            
+            
+        }
         
     }
     

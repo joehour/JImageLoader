@@ -17,9 +17,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
        
-        testView.LoadImageFromUrl("https://cdn.spacetelescope.org/archives/images/screen/heic1509a.jpg")
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg")
 
-        testView2.LoadImageFromUrl("https://cdn.spacetelescope.org/archives/images/screen/heic1509a.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
+        testView2.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
             
                       print(Prograss)
                 
@@ -43,7 +43,7 @@ class ViewController: UIViewController {
     @IBAction func ActionButton(sender: AnyObject) {
         
 
-        testView.LoadImageFromUrl("https://cdn.spacetelescope.org/archives/images/screen/heic1509a.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
             
             print(Prograss)
             
@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         
         
         
-        testView2.LoadImageFromUrl("https://cdn.spacetelescope.org/archives/images/screen/heic1509a.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
+        testView2.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
             
             print(Prograss)
             

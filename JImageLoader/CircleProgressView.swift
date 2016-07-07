@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 public struct CircleProgressParameters {
     public let width, height, linewidth: CGFloat
     public var alpha: CGFloat = 0.7
@@ -34,6 +35,8 @@ public struct CircleProgressParameters {
     }
 
 }
+
+
 
 
 public class CircleProgressView: UIView{
