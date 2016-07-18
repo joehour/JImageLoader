@@ -1,6 +1,7 @@
 JImageLoader
 =======
 A asynchronous web image loader with CircleProgressView written in Swift
+<img src="https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/pic.gif"  />
 
 Features
 ----------
