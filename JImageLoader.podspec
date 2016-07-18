@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name = "JImageLoader"
-s.version = "1.0.7"
+s.version = "1.0.8"
 s.license = "MIT"
 s.summary = "A asynchronous web image loader with CircleProgressView written in Swift."
 s.homepage = "https://github.com/joehour/JImageLoader"

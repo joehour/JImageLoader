@@ -263,7 +263,7 @@ extension UIImageView: NSURLSessionDownloadDelegate {
     }
     
     
-//////xcodebuild issue(as different optionality than expected by protocol 'NSURLSessionTaskDelegate'), when I upload this code to  cocoapods; But it work fine without cocoapods; So if you want take the didCompleteWithError event, you can recover this code~
+//////xcodebuild issue(as different optionality than expected by protocol 'NSURLSessionTaskDelegate'), when I upload this code to cocoapods; But it work fine without cocoapods; So if you want to take the didCompleteWithError event, you can recover this code~
 
 //    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
 //        
