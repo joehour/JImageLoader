@@ -40,7 +40,7 @@ class ProgressWrapper {
 
 
 
-extension UIImageView: NSURLSessionDownloadDelegate {
+extension UIImageView: NSURLSessionDownloadDelegate, NSURLSessionTaskDelegate {
     
    
     var JCircleProgressView: CircleProgressView! {
@@ -262,17 +262,17 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
     }
     
-//    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
-//        
-//        if(error != nil) {
-//            session.invalidateAndCancel()
-//            
-//        } else {
-//            
-//            
-//        }
-//        
-//    }
+    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
+        
+        if(error != nil) {
+            session.invalidateAndCancel()
+            
+        } else {
+            
+            
+        }
+        
+    }
     
     
 }
