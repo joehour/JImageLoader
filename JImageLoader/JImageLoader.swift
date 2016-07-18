@@ -262,17 +262,6 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
     }
     
-    public func URLSession(session: NSURLSession!, task: NSURLSessionTask!, didCompleteWithError error: NSError!) {
-        
-        if(error != nil) {
-            session.invalidateAndCancel()
-            
-        } else {
-            
-            
-        }
-        
-    }
     
     
 }
