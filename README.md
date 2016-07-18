@@ -25,11 +25,9 @@ Check out [Get Started](https://guides.cocoapods.org/using/getting-started.html)
 
 To use ScratchCard in your project add the following 'Podfile' to your project
 
-       source 'https://github.com/joehour/PullRefresh_LoadMore.git'
-       platform :ios, '8.0'
+       source 'https://github.com/joehour/JImageLoader.git'
+       platform :ios, '7.0'
        use_frameworks!
-
-       pod 'PullRefresh_LoadMore', '~> 1.0.1'
 
        pod 'JImageLoader', '~> 1.0.0'
 
