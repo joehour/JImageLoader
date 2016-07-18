@@ -40,7 +40,7 @@ class ProgressWrapper {
 
 
 
-extension UIImageView: NSURLSessionDownloadDelegate {
+extension UIImageView: NSURLSessionDownloadDelegate, NSURLSessionTaskDelegate {
     
    
     var JCircleProgressView: CircleProgressView! {
