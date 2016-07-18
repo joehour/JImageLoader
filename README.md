@@ -1,5 +1,5 @@
 # JImageLoader
-=======
+----------
 A asynchronous web image loader with CircleProgressView written in Swift
 
 Features
