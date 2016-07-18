@@ -31,7 +31,7 @@ To use ScratchCard in your project add the following 'Podfile' to your project
        platform :ios, '8.0'
        use_frameworks!
 
-       pod 'JImageLoader', '~> 1.0.6'
+       pod 'JImageLoader', '~> 1.0.7'
 
 Then run:
 
