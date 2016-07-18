@@ -46,7 +46,7 @@ Example
 
        UIImageView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg")
 
-#####Advanced setting: (web image contentMode, circleProgress size, complete and progress hanlder)
+#####Advanced setting: (contentMode, circleProgress, complete and progress hanlder)
 
        UIImageView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
 
