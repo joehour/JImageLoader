@@ -15,7 +15,7 @@ Features
 Requirements
 ----------
 
-- iOS 7.0+
+- iOS 8.0+
 - Xcode 7.3+ Swift 2.2
 
 Installation
@@ -28,7 +28,7 @@ Check out [Get Started](https://guides.cocoapods.org/using/getting-started.html)
 To use ScratchCard in your project add the following 'Podfile' to your project
 
        source 'https://github.com/joehour/JImageLoader.git'
-       platform :ios, '7.0'
+       platform :ios, '8.0'
        use_frameworks!
 
        pod 'JImageLoader', '~> 1.0.0'
