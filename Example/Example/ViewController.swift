@@ -12,26 +12,21 @@ import JImageLoader
 class ViewController: UIViewController {
 
     @IBOutlet weak var testView: UIImageView!
-    @IBOutlet weak var testView2: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
        
-        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg")
-
-        testView2.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
             
-                      print(Prograss)
-                
-            }
-            , completion: { ( Sucess: Bool) in
-            if(Sucess){
-                dispatch_async(dispatch_get_main_queue(),{
-                    
-                })            }
+            print(Prograss)
+            
+            } ,completion: { ( Sucess: Bool) in
+                if(Sucess){
+                    dispatch_async(dispatch_get_main_queue(),{
+                        
+                    })            }
             }
         )
-        
         
     }
 
@@ -54,21 +49,7 @@ class ViewController: UIViewController {
                     })            }
             }
         )
-        
-        
-        
-        testView2.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit, CircleProgressViewParameters: CircleProgressParameters(width: 30, height: 30, linewidth: 2), progress: {(Prograss: Float) in
-            
-            print(Prograss)
-            
-            }
-            , completion: { ( Sucess: Bool) in
-                if(Sucess){
-                    dispatch_async(dispatch_get_main_queue(),{
-                        
-                    })            }
-            }
-        )
+
     }
 
 }

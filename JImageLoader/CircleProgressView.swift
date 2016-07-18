@@ -1,6 +1,6 @@
 //
 //  CircleProgressView.swift
-//  ImageLoader
+//  JImageLoader
 //
 //  Created by JoeJoe on 2016/7/4.
 //  Copyright © 2016年 Joe. All rights reserved.

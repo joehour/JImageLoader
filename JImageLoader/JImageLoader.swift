@@ -1,6 +1,6 @@
 //
-//  ImageLoader.swift
-//  ImageLoader
+//  JImageLoader.swift
+//  JImageLoader
 //
 //  Created by JoeJoe on 2016/6/16.
 //  Copyright © 2016年 Joe. All rights reserved.
