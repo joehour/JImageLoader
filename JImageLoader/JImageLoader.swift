@@ -59,7 +59,7 @@ class JParameter {
 
 
 
-extension UIImageView: NSURLSessionDataDelegate {
+extension UIImageView: NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
     
     
     var JCircleProgressView: CircleProgressView! {
