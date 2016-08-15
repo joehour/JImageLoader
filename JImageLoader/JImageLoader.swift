@@ -373,7 +373,7 @@ extension UIImageView: NSURLSessionDataDelegate {
     
     
     
-    private func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
         print(response.expectedContentLength)
         self.Jparameter.JLength = Int(response.expectedContentLength)
         self.JStatus = "Start"
@@ -382,7 +382,7 @@ extension UIImageView: NSURLSessionDataDelegate {
         
     }
     
-    private func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
        
         dispatch_async(self.Jparameter.JQueue!, { () -> Void in
 
@@ -419,14 +419,13 @@ extension UIImageView: NSURLSessionDataDelegate {
     }
 
 
-    private func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
 
         
     }
     
     
-
-    private func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
+    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
         
         if(error != nil) {
             session.invalidateAndCancel()
