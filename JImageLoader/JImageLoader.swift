@@ -59,7 +59,7 @@ class JParameter {
 
 
 
-extension UIImageView: NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
+extension UIImageView: NSURLSessionDataDelegate {
     
     
     var JCircleProgressView: CircleProgressView! {
@@ -373,7 +373,7 @@ extension UIImageView: NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
     
     
     
-    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+    private func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
         print(response.expectedContentLength)
         self.Jparameter.JLength = Int(response.expectedContentLength)
         self.JStatus = "Start"
@@ -382,7 +382,7 @@ extension UIImageView: NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
         
     }
     
-    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+    private func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
        
         dispatch_async(self.Jparameter.JQueue!, { () -> Void in
 
@@ -419,15 +419,14 @@ extension UIImageView: NSURLSessionDataDelegate, NSURLSessionTaskDelegate {
     }
 
 
-    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+    private func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
 
         
     }
     
     
-//////xcodebuild issue(as different optionality than expected by protocol 'NSURLSessionTaskDelegate'), when I upload this code to cocoapods; But it work fine without cocoapods; So if you want to take the didCompleteWithError event, you can recover this code~
-//
-    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
+
+    private func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
         
         if(error != nil) {
             session.invalidateAndCancel()
