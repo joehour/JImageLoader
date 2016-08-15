@@ -39,6 +39,8 @@
 		B45105681D1BE604007F00C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B451056B1D1BE604007F00C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B451056D1D1BE604007F00C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B498104E1D52F21000FA2D17 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
+		B49810501D52F21000FA2D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				B40CC3271D2CDC810097F78E /* JImageLoader.framework */,
 				B45105601D1BE604007F00C8 /* Example */,
+				B498104D1D52F21000FA2D17 /* ExampleTests */,
 				B451055F1D1BE604007F00C8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,6 +84,15 @@
 				B451056D1D1BE604007F00C8 /* Info.plist */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		B498104D1D52F21000FA2D17 /* ExampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				B498104E1D52F21000FA2D17 /* ExampleTests.swift */,
+				B49810501D52F21000FA2D17 /* Info.plist */,
+			);
+			path = ExampleTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

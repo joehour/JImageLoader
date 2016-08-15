@@ -38,37 +38,87 @@
                                     </mask>
                                 </variation>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g5B-zn-wxS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Delete Cache"/>
+                                <connections>
+                                    <action selector="DeleteCache:" destination="BYZ-38-t0r" eventType="touchUpInside" id="53x-04-r7s"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P6H-8g-5Sk">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Resume"/>
+                                <connections>
+                                    <action selector="Resume:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wB1-Np-KqS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xY4-P5-Lym">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Suspend"/>
+                                <connections>
+                                    <action selector="Suspend:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j9V-VP-erj"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuj-Ih-DvG">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <state key="normal" title="Refresh"/>
                                 <connections>
-                                    <action selector="ActionButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4uT-gs-HZd"/>
+                                    <action selector="Refresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1pk-1u-Ndo"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="leading" secondItem="5qM-C7-eSz" secondAttribute="leading" id="1pe-aw-hij"/>
+                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="leading" secondItem="5qM-C7-eSz" secondAttribute="leading" id="1pe-aw-hij">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-29"/>
+                            </constraint>
                             <constraint firstItem="5qM-C7-eSz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="159" id="8Sx-Si-8R5">
                                 <variation key="heightClass=regular-widthClass=compact" constant="60"/>
                             </constraint>
                             <constraint firstAttribute="trailingMargin" secondItem="5qM-C7-eSz" secondAttribute="trailing" constant="15" id="FSE-sL-c3A"/>
+                            <constraint firstItem="P6H-8g-5Sk" firstAttribute="top" secondItem="xY4-P5-Lym" secondAttribute="bottom" constant="25" id="LXk-Hr-hAC">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-30"/>
+                            </constraint>
+                            <constraint firstItem="xY4-P5-Lym" firstAttribute="baseline" secondItem="Wuj-Ih-DvG" secondAttribute="baseline" id="N3l-Cm-6tI"/>
+                            <constraint firstItem="xY4-P5-Lym" firstAttribute="leading" secondItem="P6H-8g-5Sk" secondAttribute="leading" id="avc-95-hei">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-94"/>
+                            </constraint>
                             <constraint firstItem="5qM-C7-eSz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="16" id="dXn-Pd-ef9"/>
-                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="trailing" secondItem="5qM-C7-eSz" secondAttribute="trailing" id="fJa-80-iTZ"/>
+                            <constraint firstItem="Wuj-Ih-DvG" firstAttribute="trailing" secondItem="5qM-C7-eSz" secondAttribute="trailing" id="fJa-80-iTZ">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-267"/>
+                            </constraint>
                             <constraint firstItem="Wuj-Ih-DvG" firstAttribute="top" secondItem="5qM-C7-eSz" secondAttribute="bottom" constant="167" id="kdH-BI-kzF">
                                 <variation key="heightClass=regular-widthClass=compact" constant="33"/>
                             </constraint>
+                            <constraint firstItem="g5B-zn-wxS" firstAttribute="top" secondItem="Wuj-Ih-DvG" secondAttribute="bottom" constant="25" id="qht-Mu-Ikj">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-30"/>
+                            </constraint>
+                            <constraint firstItem="g5B-zn-wxS" firstAttribute="centerX" secondItem="Wuj-Ih-DvG" secondAttribute="centerX" id="sC7-5O-Ejp">
+                                <variation key="heightClass=regular-widthClass=compact" constant="100"/>
+                            </constraint>
                             <constraint firstItem="5qM-C7-eSz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="159" id="zdb-Yg-MI0"/>
+                            <constraint firstItem="xY4-P5-Lym" firstAttribute="leading" secondItem="Wuj-Ih-DvG" secondAttribute="trailing" constant="-109" id="zr4-sD-qzp">
+                                <variation key="heightClass=regular-widthClass=compact" constant="119"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="5qM-C7-eSz"/>
+                                <exclude reference="g5B-zn-wxS"/>
+                                <exclude reference="P6H-8g-5Sk"/>
+                                <exclude reference="xY4-P5-Lym"/>
                                 <exclude reference="Wuj-Ih-DvG"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="LXk-Hr-hAC"/>
                                 <exclude reference="1pe-aw-hij"/>
                                 <exclude reference="fJa-80-iTZ"/>
                                 <exclude reference="kdH-BI-kzF"/>
+                                <exclude reference="qht-Mu-Ikj"/>
+                                <exclude reference="sC7-5O-Ejp"/>
+                                <exclude reference="N3l-Cm-6tI"/>
+                                <exclude reference="avc-95-hei"/>
+                                <exclude reference="zr4-sD-qzp"/>
                                 <exclude reference="8Sx-Si-8R5"/>
                                 <exclude reference="FSE-sL-c3A"/>
                                 <exclude reference="dXn-Pd-ef9"/>
@@ -78,12 +128,21 @@
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="5qM-C7-eSz"/>
+                                <include reference="g5B-zn-wxS"/>
+                                <include reference="P6H-8g-5Sk"/>
+                                <include reference="xY4-P5-Lym"/>
                                 <include reference="Wuj-Ih-DvG"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="LXk-Hr-hAC"/>
                                 <include reference="1pe-aw-hij"/>
                                 <include reference="fJa-80-iTZ"/>
                                 <include reference="kdH-BI-kzF"/>
+                                <include reference="qht-Mu-Ikj"/>
+                                <include reference="sC7-5O-Ejp"/>
+                                <include reference="N3l-Cm-6tI"/>
+                                <include reference="avc-95-hei"/>
+                                <include reference="zr4-sD-qzp"/>
                                 <include reference="8Sx-Si-8R5"/>
                                 <include reference="FSE-sL-c3A"/>
                                 <include reference="dXn-Pd-ef9"/>

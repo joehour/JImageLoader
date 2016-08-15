@@ -11,6 +11,9 @@ Features
 - [x] Support CircleProgressView.
 - [x] Support complete and progress handler.
 - [x] Using NSURLSession module to download image.
+- [x] Data suspend and resume.
+- [x] Cache Manger.
+- [x] CrossDissolve Effect.
 
 Requirements
 ----------

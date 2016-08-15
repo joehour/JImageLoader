@@ -94,6 +94,7 @@ public class CircleProgressView: UIView{
                 CirclePathLayer.strokeEnd = 0
             } else {
                 self.CirclePathLayer.strokeEnd = newValue
+                
                 //self.CirclePathLayer.drawInContext(<#T##ctx: CGContext##CGContext#>)
                 //CirclePathLayer.fillColor = UIColor.whiteColor().CGColor
             }

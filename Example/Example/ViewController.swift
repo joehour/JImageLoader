@@ -15,7 +15,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-       
+
+        
         testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
             
             print(Prograss)
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func ActionButton(sender: AnyObject) {
+    @IBAction func Refresh(sender: AnyObject) {
         
 
         testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
@@ -52,5 +53,17 @@ class ViewController: UIViewController {
 
     }
 
+    @IBAction func DeleteCache(sender: UIButton) {
+        if testView.JStatus == "Complete" {
+            delect_all_cache()
+        }
+        
+    }
+    @IBAction func Suspend(sender: AnyObject) {
+        testView.suspend()
+    }
+    @IBAction func Resume(sender: AnyObject) {
+        testView.resume()
+    }
 }
 

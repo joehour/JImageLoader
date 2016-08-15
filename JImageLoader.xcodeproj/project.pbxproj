@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B41A0D1B1D2A10DF00652A1D /* CircleProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41A0D1A1D2A10DF00652A1D /* CircleProgressView.swift */; };
+		B44000681D45F6F50072F4A0 /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B44000671D45F6F50072F4A0 /* CacheManager.swift */; };
+		B498105D1D52F22A00FA2D17 /* JImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B498105C1D52F22A00FA2D17 /* JImageLoaderTests.swift */; };
+		B498105F1D52F22A00FA2D17 /* JImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FF71B51D128133001597C5 /* JImageLoader.framework */; };
 		B4FF71B91D128133001597C5 /* JImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = B4FF71B81D128133001597C5 /* JImageLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B4FF71C11D128201001597C5 /* JImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FF71C01D128201001597C5 /* JImageLoader.swift */; };
 /* End PBXBuildFile section */
@@ -20,11 +23,22 @@
 			remoteGlobalIDString = B451055E1D1BE604007F00C8;
 			remoteInfo = Example;
 		};
+		B49810601D52F22A00FA2D17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B4FF71AC1D128133001597C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B4FF71B41D128133001597C5;
+			remoteInfo = JImageLoader;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B41A0D1A1D2A10DF00652A1D /* CircleProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleProgressView.swift; sourceTree = "<group>"; };
+		B44000671D45F6F50072F4A0 /* CacheManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		B45105731D1BE604007F00C8 /* Example.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Example.xcodeproj; path = Example/Example.xcodeproj; sourceTree = "<group>"; };
+		B498105A1D52F22A00FA2D17 /* JImageLoaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JImageLoaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B498105C1D52F22A00FA2D17 /* JImageLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JImageLoaderTests.swift; sourceTree = "<group>"; };
+		B498105E1D52F22A00FA2D17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B4FF71B51D128133001597C5 /* JImageLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JImageLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B4FF71B81D128133001597C5 /* JImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JImageLoader.h; sourceTree = "<group>"; };
 		B4FF71BA1D128133001597C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -32,6 +46,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B49810571D52F22A00FA2D17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B498105F1D52F22A00FA2D17 /* JImageLoader.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4FF71B11D128133001597C5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -50,11 +72,21 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		B498105B1D52F22A00FA2D17 /* JImageLoaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				B498105C1D52F22A00FA2D17 /* JImageLoaderTests.swift */,
+				B498105E1D52F22A00FA2D17 /* Info.plist */,
+			);
+			path = JImageLoaderTests;
+			sourceTree = "<group>";
+		};
 		B4FF71AB1D128133001597C5 = {
 			isa = PBXGroup;
 			children = (
 				B45105731D1BE604007F00C8 /* Example.xcodeproj */,
 				B4FF71B71D128133001597C5 /* JImageLoader */,
+				B498105B1D52F22A00FA2D17 /* JImageLoaderTests */,
 				B4FF71B61D128133001597C5 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -63,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				B4FF71B51D128133001597C5 /* JImageLoader.framework */,
+				B498105A1D52F22A00FA2D17 /* JImageLoaderTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -74,6 +107,7 @@
 				B4FF71BA1D128133001597C5 /* Info.plist */,
 				B4FF71C01D128201001597C5 /* JImageLoader.swift */,
 				B41A0D1A1D2A10DF00652A1D /* CircleProgressView.swift */,
+				B44000671D45F6F50072F4A0 /* CacheManager.swift */,
 			);
 			path = JImageLoader;
 			sourceTree = "<group>";
@@ -92,6 +126,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		B49810591D52F22A00FA2D17 /* JImageLoaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B49810651D52F22A00FA2D17 /* Build configuration list for PBXNativeTarget "JImageLoaderTests" */;
+			buildPhases = (
+				B49810561D52F22A00FA2D17 /* Sources */,
+				B49810571D52F22A00FA2D17 /* Frameworks */,
+				B49810581D52F22A00FA2D17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B49810611D52F22A00FA2D17 /* PBXTargetDependency */,
+			);
+			name = JImageLoaderTests;
+			productName = JImageLoaderTests;
+			productReference = B498105A1D52F22A00FA2D17 /* JImageLoaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B4FF71B41D128133001597C5 /* JImageLoader */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B4FF71BD1D128133001597C5 /* Build configuration list for PBXNativeTarget "JImageLoader" */;
@@ -116,9 +168,13 @@
 		B4FF71AC1D128133001597C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = Joe;
 				TargetAttributes = {
+					B49810591D52F22A00FA2D17 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					B4FF71B41D128133001597C5 = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -143,6 +199,7 @@
 			projectRoot = "";
 			targets = (
 				B4FF71B41D128133001597C5 /* JImageLoader */,
+				B49810591D52F22A00FA2D17 /* JImageLoaderTests */,
 			);
 		};
 /* End PBXProject section */
@@ -158,6 +215,13 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B49810581D52F22A00FA2D17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4FF71B31D128133001597C5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,18 +232,55 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B49810561D52F22A00FA2D17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B498105D1D52F22A00FA2D17 /* JImageLoaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B4FF71B01D128133001597C5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B4FF71C11D128201001597C5 /* JImageLoader.swift in Sources */,
+				B44000681D45F6F50072F4A0 /* CacheManager.swift in Sources */,
 				B41A0D1B1D2A10DF00652A1D /* CircleProgressView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		B49810611D52F22A00FA2D17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B4FF71B41D128133001597C5 /* JImageLoader */;
+			targetProxy = B49810601D52F22A00FA2D17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		B49810621D52F22A00FA2D17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JImageLoaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joe.JImageLoaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B49810631D52F22A00FA2D17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = JImageLoaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = joe.JImageLoaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		B4FF71BB1D128133001597C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -311,6 +412,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B49810651D52F22A00FA2D17 /* Build configuration list for PBXNativeTarget "JImageLoaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B49810621D52F22A00FA2D17 /* Debug */,
+				B49810631D52F22A00FA2D17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B4FF71AF1D128133001597C5 /* Build configuration list for PBXProject "JImageLoader" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -8,12 +8,18 @@
 
 import Foundation
 import UIKit
+import ImageIO
 
 
 private var CircleProgressAssociationKey: UInt8 = 0
 private var CompletionAssociationKey: UInt8 = 0
 private var ProgressAssociationKey: UInt8 = 0
-private var BoolAssociationKey: UInt8 = 0
+
+private var ParameterAssociationKey: UInt8 = 0
+
+private var DispatchQueueKey: UInt8 = 0
+private var DispatchQueueShowKey: UInt8 = 0
+private var StatusKey: UInt8 = 0
 
 typealias CompletionHandler = (Success:Bool) -> Void
 
@@ -35,14 +41,27 @@ class ProgressWrapper {
     }
 }
 
-
-
-
-
-
-extension UIImageView: NSURLSessionDownloadDelegate {
+class JParameter {
+    var JQueue:dispatch_queue_t?
+    var JShowViewQueue:dispatch_queue_t?
+    var JProgressSet: Bool?
+    var JDownloadFinish: Bool?
+    var JDataTak: NSURLSessionDataTask?
+    var JImageSource: CGImageSourceRef?
+    var JData: NSMutableData?
+    var JLength: Int?
+    var JEffect: Bool?
     
-   
+    
+}
+
+
+
+
+
+extension UIImageView: NSURLSessionDataDelegate {
+    
+    
     var JCircleProgressView: CircleProgressView! {
         get {
             return objc_getAssociatedObject(self, &CircleProgressAssociationKey) as? CircleProgressView
@@ -74,17 +93,47 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         }
     }
     
-    var JBool: Bool! {
+    var JQueue: dispatch_queue_t {
         get {
-            return objc_getAssociatedObject(self, &BoolAssociationKey) as? Bool
+            return (objc_getAssociatedObject(self, &DispatchQueueKey) as? dispatch_queue_t)!
         }
         set(newValue) {
-            objc_setAssociatedObject(self, &BoolAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &DispatchQueueKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
         }
     }
     
+    var JShowViewQueue: dispatch_queue_t {
+        get {
+            return (objc_getAssociatedObject(self, &DispatchQueueShowKey) as? dispatch_queue_t)!
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &DispatchQueueShowKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        }
+    }
     
-    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), progress: (Progress: Float)->(), completion: (Sucess: Bool)->()) {
+    public var JStatus: String {
+        get {
+            return (objc_getAssociatedObject(self, &StatusKey) as? String)!
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &StatusKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+
+    
+    var Jparameter: JParameter! {
+        get {
+            guard let item = objc_getAssociatedObject(self, &ParameterAssociationKey) else{
+                return nil
+            }
+            return item as! JParameter//objc_getAssociatedObject(self, &ParameterAssociationKey) as! JParameter
+        }
+        set(newValue) {
+            objc_setAssociatedObject(self, &ParameterAssociationKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
+    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), Effect isEffect: Bool = true, progress: (Progress: Float)->(), completion: (Sucess: Bool)->()) {
         guard let url = NSURL(string: link) else { return }
         
         contentMode = mode
@@ -93,8 +142,23 @@ extension UIImageView: NSURLSessionDownloadDelegate {
 
         self.JCompletion = completion
         self.JProgress = progress
-        self.JBool = true
-     
+        
+       
+        
+        self.Jparameter = JParameter()
+        self.Jparameter.JEffect = isEffect
+        
+        self.Jparameter.JProgressSet = true
+        self.Jparameter.JImageSource = CGImageSourceCreateIncremental(nil)
+        self.Jparameter.JData = NSMutableData()
+        self.Jparameter.JLength = 0
+        self.Jparameter.JDownloadFinish = false
+        
+        self.JQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        self.JShowViewQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        //self.JDataTak = NSURLSessionDataTask()
+        
+        
         for view in self.subviews {
             view.removeFromSuperview()
         }
@@ -114,12 +178,15 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
         
         session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session?.downloadTaskWithURL(url).resume()
+        //session?.downloadTaskWithURL(url).resume()
+        //session?.dataTaskWithURL(url).resume()
         
+        self.Jparameter.JDataTak = (session?.dataTaskWithURL(url))!//.resume()
+        self.Jparameter.JDataTak!.resume()
 
     }
     
-    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), CircleProgressViewParameters: CircleProgressParameters, progress: (Progress: Float)->(), completion: (Sucess: Bool)->()) {
+    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), Effect isEffect: Bool = true, CircleProgressViewParameters: CircleProgressParameters, progress: (Progress: Float)->(), completion: (Sucess: Bool)->()) {
         guard let url = NSURL(string: link) else { return }
         
         contentMode = mode
@@ -128,7 +195,30 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
         self.JCompletion = completion
         self.JProgress = progress
-        self.JBool = true
+        
+        
+        
+        self.Jparameter = JParameter()
+        self.Jparameter.JEffect = isEffect
+        
+        self.Jparameter.JProgressSet = true
+        self.Jparameter.JImageSource = CGImageSourceCreateIncremental(nil)
+        self.Jparameter.JData = NSMutableData()
+        self.Jparameter.JLength = 0
+        self.Jparameter.JDownloadFinish = false
+        self.Jparameter.JQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        self.Jparameter.JShowViewQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        
+        
+        if let item = find_cache(link) {
+            self.image = UIImage(data: item.data!)
+            return
+        }
+        else{
+            
+        }
+       
+        
         
         for view in self.subviews {
             view.removeFromSuperview()
@@ -155,17 +245,32 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
         
         
-        session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session?.downloadTaskWithURL(url).resume()
+        session = NSURLSession(configuration: NSURLSessionConfiguration.ephemeralSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
+
+        self.Jparameter.JDataTak = (session?.dataTaskWithURL(url))!//.resume()
+        self.Jparameter.JDataTak!.resume()
         
     }
     
-    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage()) {
+    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), Effect isEffect: Bool = true) {
         guard let url = NSURL(string: link) else { return }
         
         contentMode = mode
         self.image = image
-        self.JBool = false
+        
+        self.Jparameter = JParameter()
+        self.Jparameter.JEffect = isEffect
+        
+        self.Jparameter.JProgressSet = false
+        self.Jparameter.JImageSource = CGImageSourceCreateIncremental(nil)
+        self.Jparameter.JData = NSMutableData()
+        self.Jparameter.JLength = 0
+        self.Jparameter.JDownloadFinish = false
+        
+        
+        self.JQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        self.JShowViewQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+       
         
         var session: NSURLSession?
         for view in self.subviews {
@@ -185,15 +290,28 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         }
 
         session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session?.downloadTaskWithURL(url).resume()
+        
+        self.Jparameter.JDataTak = (session?.dataTaskWithURL(url))!//.resume()
+        self.Jparameter.JDataTak!.resume()
     }
     
-    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), CircleProgressViewParameters: CircleProgressParameters) {
+    public func LoadImageFromUrl(link: String, contentMode mode: UIViewContentMode = .ScaleAspectFit, BackgroundImage image: UIImage = UIImage(), Effect isEffect: Bool = true, CircleProgressViewParameters: CircleProgressParameters) {
         guard let url = NSURL(string: link) else { return }
         
         contentMode = mode
         self.image = image
-        self.JBool = false
+        
+        self.Jparameter = JParameter()
+        self.Jparameter.JProgressSet = false
+        self.Jparameter.JEffect = isEffect
+        self.Jparameter.JImageSource = CGImageSourceCreateIncremental(nil)
+        self.Jparameter.JData = NSMutableData()
+        self.Jparameter.JLength = 0
+        self.Jparameter.JDownloadFinish = false
+        
+        self.JQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        self.JShowViewQueue = dispatch_queue_create(link, DISPATCH_QUEUE_SERIAL)
+        
         var session: NSURLSession?
 
         for view in self.subviews {
@@ -222,41 +340,85 @@ extension UIImageView: NSURLSessionDownloadDelegate {
         
         
         session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: NSOperationQueue.mainQueue())
-        session?.downloadTaskWithURL(url).resume()
+        self.Jparameter.JDataTak = (session?.dataTaskWithURL(url))!//.resume()
+        self.Jparameter.JDataTak!.resume()
         
     }
 
 
-    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didFinishDownloadingToURL location: NSURL) {
-        let data = NSData(contentsOfURL: location)
-        let image = UIImage(data: data!)
-        if JBool! {
-            self.JCompletion(Success: true)
-        }
-        //session.invalidateAndCancel()
-        
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            
-            usleep((uint)(0.2*1000000))
-            self.image = image
-            self.JCircleProgressView.hidden = true
-            
-        }
 
+//    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+//        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+//            
+//            
+//            if self.JBool!{
+//                self.JProgress(Progress:(Float)(totalBytesWritten)/(Float)(totalBytesExpectedToWrite))
+//            }
+//            
+//            self.JCircleProgressView.progress = ((CGFloat)(totalBytesWritten)/(CGFloat)(totalBytesExpectedToWrite))
+//        }
+//        
+//    }
+    
+//    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+//        var imageSource: CGImageSourceRef = CGImageSourceCreateIncremental(nil)
+//        CGImageSourceUpdateData(imageSource, data, false)
+//        
+//    }
+    
+    
+//    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+//        print("received data")
+//    }
+    
+    
+    
+    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveResponse response: NSURLResponse, completionHandler: (NSURLSessionResponseDisposition) -> Void) {
+        print(response.expectedContentLength)
+        self.Jparameter.JLength = Int(response.expectedContentLength)
+        self.JStatus = "Start"
+         completionHandler(.Allow)
+        
+        
     }
     
-    public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
-        dispatch_async(dispatch_get_main_queue()) { () -> Void in
-            
-            if self.JBool!{
-                self.JProgress(Progress:(Float)(totalBytesWritten)/(Float)(totalBytesExpectedToWrite))
+    public func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
+       
+        dispatch_async(self.Jparameter.JQueue!, { () -> Void in
+
+        self.Jparameter.JData!.appendData(data)
+        
+        if self.Jparameter.JData!.length == self.Jparameter.JLength{
+            self.Jparameter.JDownloadFinish = true
+        }
+        
+        if !self.Jparameter.JDownloadFinish! {
+//            CGImageSourceUpdateData(self.Jparameter.JImageSource!,  self.Jparameter.JData!, self.Jparameter.JDownloadFinish!)
+//            guard let imageRef:CGImageRef = CGImageSourceCreateImageAtIndex(self.Jparameter.JImageSource!, 0, nil)else{
+//                return
+//                
+//            }
+            dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                if self.Jparameter.JProgressSet!{
+                    self.JProgress(Progress:(Float)(self.Jparameter.JData!.length)/(Float)(self.Jparameter.JLength!))
+                }
+                
+                
+                self.JCircleProgressView.progress = ((CGFloat)(self.Jparameter.JData!.length)/(CGFloat)(self.Jparameter.JLength!))
+                self.JStatus = "Loading"
+//                if(self.Jparameter.JEffect != true){
+//                   self.image =  UIImage(CGImage: imageRef)
+//                }
             }
             
-            self.JCircleProgressView.progress = ((CGFloat)(totalBytesWritten)/(CGFloat)(totalBytesExpectedToWrite))
         }
         
-    }
+        })
     
+    
+    }
+
+
     public func URLSession(session: NSURLSession, downloadTask: NSURLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
 
         
@@ -264,20 +426,117 @@ extension UIImageView: NSURLSessionDownloadDelegate {
     
     
 //////xcodebuild issue(as different optionality than expected by protocol 'NSURLSessionTaskDelegate'), when I upload this code to cocoapods; But it work fine without cocoapods; So if you want to take the didCompleteWithError event, you can recover this code~
+//
+    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
+        
+        if(error != nil) {
+            session.invalidateAndCancel()
+            
+        } else {
+            
+            dispatch_async(self.Jparameter.JQueue!, { () -> Void in
+                
+                //dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                
+                if self.Jparameter.JData!.length == self.Jparameter.JLength{
+                    
+                    CGImageSourceUpdateData(self.Jparameter.JImageSource!,  self.Jparameter.JData!, true)
+                    guard let imageRef:CGImageRef = CGImageSourceCreateImageAtIndex(self.Jparameter.JImageSource!, 0, nil)else{
+                        return
+                        
+                    }
+                    
+                    var info:CacheInfo = CacheInfo()
+                    info.key = task.currentRequest?.URL?.absoluteString
+                    info.data = self.Jparameter.JData
+                    
+                    set_cache(info)
+                    
+                    
+                    dispatch_async(self.Jparameter.JShowViewQueue!, { () -> Void in
+                        //
+                        usleep((uint)(0.2*1000000))
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            if self.Jparameter.JProgressSet!{
+                                self.JProgress(Progress:(Float)(self.Jparameter.JData!.length)/(Float)(self.Jparameter.JLength!))
+                            }
+                            
+                            self.JCircleProgressView.progress = ((CGFloat)(self.Jparameter.JData!.length)/(CGFloat)(self.Jparameter.JLength!))
 
-//    public func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError!) {
-//        
-//        if(error != nil) {
-//            session.invalidateAndCancel()
-//            
-//        } else {
-//            
-//            
-//        }
-//        
-//    }
+                            self.JCircleProgressView.hidden = true
+                            
+                        }
+                        
+                        
+                       
+                    })
+                    
+                    dispatch_async(self.Jparameter.JShowViewQueue!, { () -> Void in
+                        usleep((uint)(0.2*1000000))
+                        dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                            if(self.Jparameter.JEffect == true){
+                            UIView.transitionWithView(self, duration: 3, options:
+                                [.CurveEaseOut, .TransitionCrossDissolve], animations: {
+                                    
+                                    self.image =  UIImage(CGImage: imageRef)
+                                    
+                                }, completion: {_ in
+                                   self.JStatus = "Complete"
+                                    if self.Jparameter.JProgressSet! {
+                                        self.JCompletion(Success: true)
+                                    }
+                                }
+                            )
+                           }else{
+                                
+                              self.image =  UIImage(CGImage: imageRef)
+                              self.JStatus = "Complete"
+                                if self.Jparameter.JProgressSet! {
+                                    self.JCompletion(Success: true)
+                                }
+                            }
+                        }
+                            
+                    })
+                    
+                   
+                    
+                }
+            
+            
+            
+            })
+            
+            
+            
+            
+            }
+        
+        
+        
+        
+    }
     
+    public func suspend(){
+        if self.Jparameter != nil {
+            self.Jparameter.JDataTak!.suspend()
+        }
+    }
     
+    public func resume(){
+        if self.Jparameter.JDataTak != nil {
+         self.Jparameter.JDataTak!.resume()
+        }
+    }
+    
+    public func cancel(){
+        if self.Jparameter.JDataTak != nil {
+           self.Jparameter.JDataTak!.cancel()
+            self.image = nil
+            self.JCircleProgressView.hidden = true
+        }
+        
+    }
 }
 
 
