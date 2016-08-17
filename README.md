@@ -34,7 +34,7 @@ To use JImageLoader in your project add the following 'Podfile' to your project
        platform :ios, '8.0'
        use_frameworks!
 
-       pod 'JImageLoader', '~> 1.0.8'
+       pod 'JImageLoader', '~> 1.0.9'
 
 Then run:
 
