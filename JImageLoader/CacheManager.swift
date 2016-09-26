@@ -9,12 +9,12 @@
 import Foundation
 
 
-public let JImageLoaderCache:NSCache? = NSCache()
+public let JImageLoaderCache:NSCache<NSString, CacheInfo>? = NSCache<NSString, CacheInfo>()
 
 public func set_cache(object: CacheInfo){
     //let cache: NSCache = NSCache()
     
-    JImageLoaderCache!.setObject(object, forKey: object.key!)
+    JImageLoaderCache!.setObject(object, forKey: object.key! as NSString)
     //cache_list.addObject(cache)
 }
 
@@ -23,14 +23,14 @@ public func set_cache(data: NSData, key: String ){
     let info: CacheInfo = CacheInfo()
     info.data = data
     info.key = key
-    JImageLoaderCache!.setObject(info, forKey: info.key!)
+    JImageLoaderCache!.setObject(info, forKey: info.key! as NSString)
 }
 
 public func find_cache(key: String)-> CacheInfo?{
     
-    if let item = JImageLoaderCache!.objectForKey(key) {
+    if let item = JImageLoaderCache!.object(forKey: key as NSString) {
         
-        guard let _item: CacheInfo  = item as! CacheInfo else{
+        guard let _item: CacheInfo  = item else{
             return nil
         }
         return _item
@@ -41,26 +41,26 @@ public func find_cache(key: String)-> CacheInfo?{
 
 }
 
-public func find_cache(key: String, completion: (cache_info: CacheInfo?)->()){
-    if let item = JImageLoaderCache!.objectForKey(key) {
+public func find_cache(key: String, completion: (_ cache_info: CacheInfo?)->()){
+    if let item = JImageLoaderCache!.object(forKey: key as NSString) {
         
-        guard let _item: CacheInfo  = item as! CacheInfo else{
+        guard let _item: CacheInfo  = item else{
             
-            completion(cache_info: nil)
+            completion(nil)
             return
         }
-        completion(cache_info: _item)
+        completion(_item)
         
     }
     else{
-         completion(cache_info: nil)
+         completion(nil)
     }
     
 }
 
 public func delect_cache(key: String){
-    if find_cache(key) != nil {
-        JImageLoaderCache!.removeObjectForKey(key)
+    if find_cache(key: key) != nil {
+        JImageLoaderCache!.removeObject(forKey: key as NSString)
     }
 }
 

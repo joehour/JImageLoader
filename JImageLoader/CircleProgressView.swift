@@ -13,9 +13,9 @@ import UIKit
 public struct CircleProgressParameters {
     public let width, height, linewidth: CGFloat
     public var alpha: CGFloat = 0.7
-    public var fillColor: UIColor = UIColor.clearColor()
-    public var strokeColor: UIColor = UIColor.whiteColor()
-    public var backgroundColor: UIColor = UIColor.blackColor()
+    public var fillColor: UIColor = UIColor.clear
+    public var strokeColor: UIColor = UIColor.white
+    public var backgroundColor: UIColor = UIColor.black
     
     public init(width: CGFloat, height: CGFloat, linewidth: CGFloat) {
         self.width   = width
@@ -39,7 +39,7 @@ public struct CircleProgressParameters {
 
 
 
-public class CircleProgressView: UIView{
+open class CircleProgressView: UIView{
     
     let CirclePathLayer = CAShapeLayer()
     //let CircleRadius: CGFloat = 50.0
@@ -60,22 +60,22 @@ public class CircleProgressView: UIView{
         
         CirclePathLayer.frame = bounds
         CirclePathLayer.lineWidth = 3
-        CirclePathLayer.fillColor = UIColor.clearColor().CGColor
-        CirclePathLayer.strokeColor = UIColor.whiteColor().CGColor
+        CirclePathLayer.fillColor = UIColor.clear.cgColor
+        CirclePathLayer.strokeColor = UIColor.white.cgColor
         
         self.layer.cornerRadius = 6;
         self.layer.masksToBounds = true;
         
         layer.addSublayer(CirclePathLayer)
-        backgroundColor = UIColor.blackColor()
+        backgroundColor = UIColor.black
         alpha = 0.7
         
     }
     
     func CircleFrame() -> CGRect {
         var CircleFrame = CGRect(x: 0, y: 0, width: 1 * frame.width, height: 1 * frame.height)
-        CircleFrame.origin.x = CGRectGetMidX(CirclePathLayer.bounds) - CGRectGetMidX(CircleFrame)
-        CircleFrame.origin.y = CGRectGetMidY(CirclePathLayer.bounds) - CGRectGetMidY(CircleFrame)
+        CircleFrame.origin.x = CirclePathLayer.bounds.midX - CircleFrame.midX
+        CircleFrame.origin.y = CirclePathLayer.bounds.midY - CircleFrame.midY
         return CircleFrame
     }
     
@@ -130,10 +130,10 @@ public class CircleProgressView: UIView{
     
     
     
-    override public func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         CirclePathLayer.frame = bounds
-        CirclePathLayer.path = CirclePath().CGPath
+        CirclePathLayer.path = CirclePath().cgPath
     }
     
     

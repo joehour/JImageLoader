@@ -17,17 +17,19 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         
-        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .scaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clear, strokeColor: UIColor.green, backgroundColor: UIColor.black ), progress: {(Prograss: Float) in
             
             print(Prograss)
             
             } ,completion: { ( Sucess: Bool) in
                 if(Sucess){
-                    dispatch_async(dispatch_get_main_queue(),{
+                    DispatchQueue.main.async {
                         
-                    })            }
+                    }}
             }
         )
+        
+        
         
     }
 
@@ -36,33 +38,35 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    @IBAction func Refresh(sender: AnyObject) {
+    @IBAction func Refresh(_ sender: AnyObject) {
         
 
-        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .ScaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clearColor(), strokeColor: UIColor.greenColor(), backgroundColor: UIColor.blackColor() ), progress: {(Prograss: Float) in
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .scaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clear, strokeColor: UIColor.green, backgroundColor: UIColor.black ), progress: {(Prograss: Float) in
             
             print(Prograss)
             
             } ,completion: { ( Sucess: Bool) in
                 if(Sucess){
-                    dispatch_async(dispatch_get_main_queue(),{
+                    DispatchQueue.main.async {
                         
-                    })            }
+                    }
+                }
             }
         )
-
+        
+       
     }
 
-    @IBAction func DeleteCache(sender: UIButton) {
+    @IBAction func DeleteCache(_ sender: UIButton) {
         if testView.JStatus == "Complete" {
             delect_all_cache()
         }
         
     }
-    @IBAction func Suspend(sender: AnyObject) {
+    @IBAction func Suspend(_ sender: AnyObject) {
         testView.suspend()
     }
-    @IBAction func Resume(sender: AnyObject) {
+    @IBAction func Resume(_ sender: AnyObject) {
         testView.resume()
     }
 }
