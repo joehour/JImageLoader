@@ -176,7 +176,7 @@ extension UIImageView: URLSessionDataDelegate {
         
         
         
-        session = Foundation.URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main)
+        session = Foundation.URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: OperationQueue.main)
         //session?.downloadTaskWithURL(url).resume()
         //session?.dataTaskWithURL(url).resume()
         
@@ -288,7 +288,7 @@ extension UIImageView: URLSessionDataDelegate {
        
         }
 
-        session = Foundation.URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main)
+        session = Foundation.URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: OperationQueue.main)
         
         self.Jparameter.JDataTak = (session?.dataTask(with: url))!//.resume()
         self.Jparameter.JDataTak!.resume()
@@ -338,7 +338,7 @@ extension UIImageView: URLSessionDataDelegate {
         
         
         
-        session = Foundation.URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: OperationQueue.main)
+        session = Foundation.URLSession(configuration: URLSessionConfiguration.ephemeral, delegate: self, delegateQueue: OperationQueue.main)
         self.Jparameter.JDataTak = (session?.dataTask(with: url))!//.resume()
         self.Jparameter.JDataTak!.resume()
         

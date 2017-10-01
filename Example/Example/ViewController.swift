@@ -17,17 +17,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
 
         
-        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .scaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clear, strokeColor: UIColor.green, backgroundColor: UIColor.black ), progress: {(Prograss: Float) in
-            
-            print(Prograss)
-            
-            } ,completion: { ( Sucess: Bool) in
-                if(Sucess){
-                    DispatchQueue.main.async {
-                        
-                    }}
-            }
-        )
+        testView.LoadImageFromUrl("https://raw.githubusercontent.com/joehour/JImageLoader/master/Example/test.jpg", contentMode: .scaleAspectFit,CircleProgressViewParameters: CircleProgressParameters(width: 50, height: 50, linewidth: 3, alpha: 0.7, fillColor: UIColor.clear, strokeColor: UIColor.green, backgroundColor: UIColor.black )        )
         
         
         
