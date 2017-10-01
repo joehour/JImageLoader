@@ -153,8 +153,8 @@ extension UIImageView: URLSessionDataDelegate {
         self.Jparameter.JLength = 0
         self.Jparameter.JDownloadFinish = false
         
-        self.JQueue = DispatchQueue(label: link, attributes: [])
-        self.JShowViewQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JShowViewQueue = DispatchQueue(label: link, attributes: [])
         //self.JDataTak = NSURLSessionDataTask()
         
         
@@ -267,8 +267,8 @@ extension UIImageView: URLSessionDataDelegate {
         self.Jparameter.JDownloadFinish = false
         
         
-        self.JQueue = DispatchQueue(label: link, attributes: [])
-        self.JShowViewQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JShowViewQueue = DispatchQueue(label: link, attributes: [])
        
         
         var session: Foundation.URLSession?
@@ -308,8 +308,8 @@ extension UIImageView: URLSessionDataDelegate {
         self.Jparameter.JLength = 0
         self.Jparameter.JDownloadFinish = false
         
-        self.JQueue = DispatchQueue(label: link, attributes: [])
-        self.JShowViewQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JQueue = DispatchQueue(label: link, attributes: [])
+        self.Jparameter.JShowViewQueue = DispatchQueue(label: link, attributes: [])
         
         var session: Foundation.URLSession?
 
