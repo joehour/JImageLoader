@@ -157,6 +157,13 @@ extension UIImageView: URLSessionDataDelegate {
         self.Jparameter.JShowViewQueue = DispatchQueue(label: link, attributes: [])
         //self.JDataTak = NSURLSessionDataTask()
         
+        if let item = find_cache(key: link) {
+            self.image = UIImage(data: item.data! as Data)
+            return
+        }
+        else{
+            
+        }
         
         for view in self.subviews {
             view.removeFromSuperview()
@@ -272,6 +279,15 @@ extension UIImageView: URLSessionDataDelegate {
        
         
         var session: Foundation.URLSession?
+        
+        if let item = find_cache(key: link) {
+            self.image = UIImage(data: item.data! as Data)
+            return
+        }
+        else{
+            
+        }
+        
         for view in self.subviews {
             view.removeFromSuperview()
         }
@@ -313,6 +329,14 @@ extension UIImageView: URLSessionDataDelegate {
         
         var session: Foundation.URLSession?
 
+        if let item = find_cache(key: link) {
+            self.image = UIImage(data: item.data! as Data)
+            return
+        }
+        else{
+            
+        }
+        
         for view in self.subviews {
             view.removeFromSuperview()
         }
